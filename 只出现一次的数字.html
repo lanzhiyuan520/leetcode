@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    *只出现一次的数字
+    * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
+    * 输入: [2,2,3,2]
+      输出: 3
+    * */
+    var nums = [2,2,3,2,4,4,4]
+    function fun(nums){
+        var obj = {}
+        var max_num = 0
+        for (var i = 0; i < nums.length; i++) {
+            if (obj[nums[i]]) {
+                obj[nums[i]]++
+            }else{
+                obj[nums[i]]=1
+            }
+        }
+
+        for (var i in obj){
+            if (obj[i]==1){
+                max_num = i
+            }
+        }
+        return parseInt(max_num)
+    }
+    console.log(fun(nums))
+</script>
+</body>
+</html>

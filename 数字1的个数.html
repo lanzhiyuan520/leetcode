@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    *给定一个整数 n，计算所有小于等于 n 的非负整数中数字 1 出现的个数。
+    * 输入: 13
+      输出: 6
+      解释: 数字 1 出现在以下数字中: 1, 10, 11, 12, 13 。
+    *
+    * */
+    var n = 13
+    function fun(n){
+       //  var count = 0
+       //  for (var i = 0; i <= n; i++) {
+       //      fun2(i+'')
+       //  }
+       //  function fun2(s){
+       //      s.split('')
+       //      for (let i = 0; i < s.length; i++) {
+       //          if (s[i] == '1'){
+       //              count++
+       //          }
+       //      }
+       //  }
+       // return count
+        var count = 0
+        for (var i = 0; i <= n; i++) {
+            if ((i+'').indexOf('1') != -1){
+                count += ((i+'').split('1')).length-1
+            }
+        }
+        console.log(count)
+    }
+    console.log(fun(n))
+</script>
+</body>
+</html>

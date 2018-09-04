@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。
+    请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。
+    你可以假设 nums1 和 nums2 不同时为空。
+    nums1 = [1, 3]
+    nums2 = [2]
+    中位数是 2.0
+
+    nums1 = [1, 2]
+    nums2 = [3, 4]
+    中位数是 (2 + 3)/2 = 2.5
+    *
+    * */
+    var nums1 = [1],nums2 = [4]
+    function fun(nums1,nums2){
+        var nums = nums1.concat(nums2)
+        function sort(nums){
+            if (nums.length <= 1){
+                return nums
+            }
+            var max_index = Math.floor(nums.length/2)
+            var max_num = nums.splice(max_index,1)[0]
+            var left = []
+            var right = []
+            for (var i = 0;i<nums.length;i++) {
+                    if(nums[i] <= max_num){
+                        left.push(nums[i])
+                    }else {
+                        right.push(nums[i])
+                    }
+            }
+            return sort(left).concat([max_num],sort(right))
+        }
+        nums = sort(nums)
+        if (nums.length % 2 == 0){
+            var a = nums.length/2
+            return (nums[a]+nums[a-1])/2
+
+        }else {
+            var n = Math.floor(nums.length/2)
+            return parseInt(nums[n])
+        }
+    }
+    console.log(fun(nums1,nums2))
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 比较含退格的字符串
+    //给定 S 和 T 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 # 代表退格字符。
+    var S = 'a#c'
+    var T = 'b'
+    var backspaceCompare = function(S,T) {
+        var s = S.split('')
+        var t = T.split('')
+        for (var i = 0;i<s.length;i++){
+            if (s[i] == '#' && i != 0){
+                s.splice(i-1,2)
+                i = i - 2
+            }else if (s[i] == '#' && i == 0) {
+                s.splice(i,1)
+            }
+        }
+        for (var j = 0;j<t.length;j++){
+            if (t[j] == '#' && j != 0){
+                t.splice(j-1,2)
+                j = j - 2
+            }else if (t[j] == '#' && j == 0) {
+                t.splice(j,1)
+            }
+        }
+        if (s.join('').replace('#','') == t.join('').replace('#','')){
+            return true
+        } else {
+            return false
+        }
+    };
+    console.log(backspaceCompare(S,T))
+
+</script>
+</body>
+</html>

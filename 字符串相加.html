@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。
+    //注意：
+        //num1 和num2 的长度都小于 5100.
+        //num1 和num2 都只包含数字 0-9.
+        //num1 和num2 都不包含任何前导零。
+        //你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。
+    var num1 = '9333852702227987'
+    var num2 = '85731737104263'
+    function fun(num1,num2){
+        var res = '',c = 0
+        //9419584439332250    c:0
+        //转换数组
+        num1 = num1.split('')
+        num2 = num2.split('')
+        while (num1.length || num2.length || c){
+            //c等于num1和num2删除最后一位数组相加
+            c += ~~num1.pop() + ~~num2.pop()
+            //res等于c % 10的余数
+            res = c % 10 + res
+            //c大于10就进一 false:0 true:1
+            c = c > 9
+        }
+        return res
+    }
+    console.log(fun(num1,num2))
+
+</script>
+</body>
+</html>
